@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  facility: one
+  room_name: MyString
+  seating_capacity: 1
+  usage_fee: 1
+  accountable_time: 1
+  note: MyText
+
+two:
+  facility: two
+  room_name: MyString
+  seating_capacity: 1
+  usage_fee: 1
+  accountable_time: 1
+  note: MyText

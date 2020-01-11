@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>会議室の新規登録</h1>
+  <%= form_with(model: @room, url: "/rooms/create", local: true) do |form| %>
+    <%= form.label :name, '会議室名' %>
+    <%= form.text_field :name %></br>
+    <%= form.label :seating_capacity, '収容人数' %>
+    <%= form.text_field :seating_capacity %></br>
+    <%= form.label :usage_fee, '利用金額' %>
+    <%= form.text_field :usage_fee %></br>
+    <%= form.label :accountable_time, '使用可能時間' %>
+    <%= form.text_field :accountable_time %></br>
+    <%= form.label :note, '備考' %>
+    <%= form.text_field :note %></br>
+    <%= form.submit "登録"%>
+  <% end %>
+</div>

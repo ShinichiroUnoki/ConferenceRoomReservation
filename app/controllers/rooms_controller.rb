@@ -1,0 +1,41 @@
+class RoomsController < ApplicationController
+  def index
+    @facility = Facility.find(1)
+    @rooms = @facility.rooms.all
+  end
+
+  def new
+    @facility = Facility.find(1)
+    @room = @facility.rooms.new
+  end
+
+  def create
+    @facility = Facility.find(1)
+    @room = @facility.rooms.create(room_params)
+    redirect_to("/")
+  end
+
+  def edit
+    @facility = Facility.find(1)
+    @room = @facility.rooms.find(params[:id])
+  end
+
+  def update
+    @facility = Facility.find(1)
+    @room = @facility.rooms.find(params[:id])
+    @room.update(room_params)
+    redirect_to("/")
+  end
+
+  def destroy
+    @facility = Facility.find(1)
+    @room = @facility.rooms.find(params[:id])
+    @room.destroy
+    redirect_to("/")
+  end
+
+  def room_params
+    params.require(:room).permit(:name, :seating_capacity, :usage_fee, :accountable_time)
+  end
+
+end

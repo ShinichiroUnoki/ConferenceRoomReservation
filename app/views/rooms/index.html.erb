@@ -1,0 +1,13 @@
+<div class="container">
+  <%= link_to "新規作成", "/rooms/new" %></br>
+  <% if @rooms %>
+    <% @rooms.each do |room| %>
+      <%= room.name %>
+      <%= room.seating_capacity %>
+      <%= room.usage_fee %>
+      <%= room.accountable_time %>
+      <%= link_to "編集", "/rooms/edit/#{room.id}" %>
+      <%= link_to "カレンダー", "/schedules/top/#{room.id}" %></br>
+    <% end %>
+  <% end %>
+</div>
