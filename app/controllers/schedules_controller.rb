@@ -6,12 +6,13 @@ class SchedulesController < ApplicationController
 
   def new
     @room = Room.find(params[:id])
-    @schedule = @room.schedules.new
+    @schedule = Schedule.new
   end
 
   def create
     @room = Room.find(params[:id])
-    @schedule = @room.schedules.create(schedule_params)
+    @schedule = Schedule.new(schedule_params)
+    @schedule.save!
     redirect_to("/schedules/new/#{@room.id}")
   end
 

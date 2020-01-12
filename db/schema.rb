@@ -30,14 +30,16 @@ ActiveRecord::Schema.define(version: 2020_01_10_165006) do
   end
 
   create_table "schedules", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
     t.integer "room_id"
+    t.integer "user_id"
     t.time "starting_time"
     t.time "finish_time"
     t.string "title"
     t.text "detail"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_schedules_on_room_id"
+    t.index ["user_id"], name: "index_schedules_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
