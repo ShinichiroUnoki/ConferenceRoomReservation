@@ -71,3 +71,12 @@ gem 'momentjs-rails'
 
 #devise(ログイン機能追加)
 gem 'devise'
+
+#bootstrap4
+gem 'bootstrap', '~> 4.3.1'
+
+# Tempus Dominus
+gem 'bootstrap4-datetime-picker-rails'
+
+# font-awesome
+gem 'font-awesome-rails'

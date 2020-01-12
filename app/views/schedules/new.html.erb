@@ -9,6 +9,8 @@
     <%= form.text_field :title %></br>
     <%= form.label :detail, '内容' %>
     <%= form.text_field :detail %></br>
+    <%= form.hidden_field :room_id, :value => @room.id %>
+    <%= form.hidden_field :user_id, :value => @user.id %>
     <%= form.submit "新規作成"%>
   <% end %>
 </div>

@@ -7,6 +7,7 @@ class SchedulesController < ApplicationController
   def new
     @room = Room.find(params[:id])
     @schedule = Schedule.new
+    @user = current_user
   end
 
   def create
