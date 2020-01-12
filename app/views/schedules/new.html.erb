@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>予約の新規作成</h1>
+  <%= form_with(model: @schedule, url: "/schedules/create/#{@room.id}", local: true) do |form| %>
+    <%= form.label :starting_time, '開始時刻' %>
+    <%= form.text_field :starting_time %></br>
+    <%= form.label :finish_time, '終了時刻' %>
+    <%= form.text_field :finish_time %></br>
+    <%= form.label :title, 'タイトル' %>
+    <%= form.text_field :title %></br>
+    <%= form.label :detail, '内容' %>
+    <%= form.text_field :detail %></br>
+    <%= form.submit "新規作成"%>
+  <% end %>
+</div>

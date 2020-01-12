@@ -1,3 +1,5 @@
-<h1>Schedules#top</h1>
-<p>Find me in app/views/schedules/top.html.erb</p>
-<div id="calendar"></div>
+<h1><%= @room.name %></h1>
+<%= link_to "新規作成", "/schedules/new/#{@room.id}" %></br>
+<div class="container">
+    <div id="calendar"></div>
+</div>

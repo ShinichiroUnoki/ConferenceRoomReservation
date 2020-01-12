@@ -12,8 +12,10 @@ Rails.application.routes.draw do
 
   #カレンダー参照
   get 'schedules/top/:id', to: 'schedules#top'
-  #スケジュール作成
-  get 'schedules/create'
+  #予約の新規作成
+  get 'schedules/new/:id', to: 'schedules#new'
+  post 'schedules/create/:id', to: 'schedules#create'
+
   get 'schedules/update'
   get 'schedules/destroy'
 
