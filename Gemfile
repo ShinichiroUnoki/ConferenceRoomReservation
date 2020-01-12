@@ -68,3 +68,6 @@ gem 'mysql2'
 gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+#devise(ログイン機能追加)
+gem 'devise'

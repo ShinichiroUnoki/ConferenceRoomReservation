@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   #会議室一覧
   root 'rooms#index'
   #会議室の新規登録
