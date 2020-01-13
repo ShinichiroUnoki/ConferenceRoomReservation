@@ -1,10 +1,33 @@
+<script>
+  $(function () {
+    $('.datepicker_starting').datetimepicker({
+      format: 'YYYY/MM/DD HH:mm'
+    });
+
+    $('.datepicker_finish').datetimepicker({
+      format: 'YYYY/MM/DD HH:mm'
+    });
+
+  });
+</script>
+
 <div class="container">
   <h1>予約の新規作成</h1>
   <%= form_with(model: @schedule, url: "/schedules/create/#{@room.id}", local: true) do |form| %>
-    <%= form.label :starting_time, '開始時刻' %>
-    <%= form.text_field :starting_time %></br>
-    <%= form.label :finish_time, '終了時刻' %>
-    <%= form.text_field :finish_time %></br>
+    <div class="input-group" data-target-input="nearest">
+      <%= form.label :starting_time, '開始時刻' %>
+      <%= form.text_field :starting_time, id: "starting_time", class: "form-control datepicker_starting", data: { target: '#starting_time'} %>
+      <div class="input-group-append" data-target="#starting_time" data-toggle="datetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+    <div class="input-group" data-target-input="nearest">
+      <%= form.label :finish_time, '終了時刻' %>
+      <%= form.text_field :finish_time, id: "finish_time", class: "form-control datepicker_finish", data: { target: '#finish_time'} %>
+      <div class="input-group-append" data-target="#finish_time" data-toggle="datetimepicker">
+          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
     <%= form.label :title, 'タイトル' %>
     <%= form.text_field :title %></br>
     <%= form.label :detail, '内容' %>
