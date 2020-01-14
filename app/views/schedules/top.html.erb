@@ -15,8 +15,8 @@
         $(document).on('turbolinks:before-cache', clearCalendar);
 
         $('#calendar').fullCalendar({
+            lang: 'ja',
             events: '/schedules/top/<%= @room.id %>.json',
-
             displayEventTime: true,
             displayEventEnd: {
                 month: true,

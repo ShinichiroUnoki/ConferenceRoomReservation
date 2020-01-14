@@ -25,6 +25,7 @@
 //= require tempusdominus-bootstrap-4.js
 
 //= require fullcalendar
+//= require fullcalendar/lang/ja
 //= require_tree .
 
 
