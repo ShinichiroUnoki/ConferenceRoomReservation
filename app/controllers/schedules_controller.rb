@@ -2,6 +2,10 @@ class SchedulesController < ApplicationController
   def top
     @facility = Facility.find(1)
     @room = @facility.rooms.find(params[:id])
+    if @room
+      @schedules = @room.schedules.where(room_id: params[:id])
+      render 'top'
+    end
   end
 
   def new

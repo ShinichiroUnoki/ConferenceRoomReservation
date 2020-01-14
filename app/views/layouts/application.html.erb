@@ -12,9 +12,27 @@
   </head>
 
   <body>
-    <%= yield %>
-    <% if user_signed_in? %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <% end %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <% if user_signed_in? %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <% end %>
+        </div>
+        <div class="col-8">
+          <div class="col-8">
+            <% if user_signed_in? %>
+              <% @user = current_user %>
+              <% if @user.last_name && @user.first_name %>
+                <%= @user.last_name + @user.first_name %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col no-gutters">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

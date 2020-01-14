@@ -1,13 +1,20 @@
 <script>
+  var d = new Date();//二日後から開始セット
+  d.setDate(d.getDate() + 2);//二日後から開始セット
   $(function () {
     $('.datepicker_starting').datetimepicker({
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'YYYY/MM/DD HH:mm',
+      language: 'ja',
+      stepping: 5,
+      forceMinuteStep: true
     });
 
     $('.datepicker_finish').datetimepicker({
-      format: 'YYYY/MM/DD HH:mm'
+      format: 'YYYY/MM/DD HH:mm',
+      language: 'ja',
+      stepping: 5,
+      forceMinuteStep: true,
     });
-
   });
 </script>
 
@@ -37,3 +44,4 @@
     <%= form.submit "新規作成"%>
   <% end %>
 </div>
+

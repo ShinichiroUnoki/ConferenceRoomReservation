@@ -11,3 +11,4 @@
 # end
 # User.create(last_name: 'unoki')
 Facility.create(name: 'Inner Resource')
+User.create(facility_id: 1, last_name: '鵜木', first_name: '新一郎', email: 'unoki.shinichiro.1994@gmail.com', password: '123456')
