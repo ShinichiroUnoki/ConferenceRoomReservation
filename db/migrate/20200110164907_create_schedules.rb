@@ -8,6 +8,7 @@ class CreateSchedules < ActiveRecord::Migration[5.2]
       t.datetime :finish_time
       t.string :title
       t.text :detail
+      t.string :url
 
       t.timestamps
     end

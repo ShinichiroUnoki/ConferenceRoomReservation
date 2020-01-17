@@ -18,17 +18,27 @@ class SchedulesController < ApplicationController
     @room = Room.find(params[:id])
     @schedule = Schedule.new(schedule_params)
     @schedule.save!
-    redirect_to("/schedules/new/#{@room.id}")
+    redirect_to("/schedules/top/#{@room.id}")
+  end
+
+  def edit
+    @schedule = Schedule.find(params[:id])
   end
 
   def update
+    @schedule= Schedule.find(params[:id])
+    @schedule.update(schedule_params)
+    redirect_to("/schedules/top/#{@schedule.room_id}")
   end
 
   def destroy
+    @schedule = Schedule.find(params[:id])
+    @schedule.destroy
+    redirect_to("/schedules/top/#{@schedule.room_id}")
   end
 
   def schedule_params
-    params.require(:schedule).permit(:user_id, :room_id, :starting_time, :finish_time, :title, :detail)
+    params.require(:schedule).permit(:user_id, :room_id, :starting_time, :finish_time, :title, :detail, :url)
   end
 
 end

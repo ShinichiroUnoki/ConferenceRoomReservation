@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_111849) do
     t.datetime "finish_time"
     t.string "title"
     t.text "detail"
+    t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :facility
   has_many :schedules, dependent: :destroy
-  has_many :rooms, through: :schedules
+  has_many :rooms, through: :schedules, dependent: :destroy
 end

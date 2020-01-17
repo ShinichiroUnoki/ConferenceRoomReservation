@@ -1,4 +1,4 @@
-<h2>ユーザー登録</h2>
+<h2 class="text-center">ユーザー登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation, "パスワード(確認)" %><br />
+    <%= f.label :password_confirmation, "パスワード確認" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
@@ -26,9 +26,11 @@
     <%= f.hidden_field :facility_id, :value => 1 %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "サインアップ" %>
+  <div class="actions text-center">
+    <%= f.submit "サインアップ", {class: "text-white rounded bg-primary"} %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="text-center">
+  <%= render "devise/shared/links" %>
+</div>

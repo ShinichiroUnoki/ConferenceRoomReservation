@@ -16,15 +16,16 @@ Rails.application.routes.draw do
   #予約の新規作成
   get 'schedules/new/:id', to: 'schedules#new'
   post 'schedules/create/:id', to: 'schedules#create'
+  #予約の編集
+  get 'schedules/edit/:id', to: 'schedules#edit'
+  patch 'schedules/update/:id', to: 'schedules#update'
+  #予約の削除
+  delete 'schedules/destroy/:id', to: 'schedules#destroy'
 
-  get 'schedules/update'
-  get 'schedules/destroy'
+  #マイカレンダー表示
+  get 'users/calendar', to: 'users#calendar'
+  #登録情報
+  get '/users/edit'
 
-
-  get 'users/calender'
-  get 'users/show'
-  get 'users/update'
-  get 'users/show'
-  get 'users/update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

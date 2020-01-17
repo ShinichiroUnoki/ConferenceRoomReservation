@@ -1,49 +1,71 @@
-<script>
-  var d = new Date();//二日後から開始セット
-  d.setDate(d.getDate() + 2);//二日後から開始セット
+<script type="text/javascript">
   $(function () {
     $('.datepicker_starting').datetimepicker({
       format: 'YYYY/MM/DD HH:mm',
       language: 'ja',
-      stepping: 5,
-      forceMinuteStep: true
-      minDate: 0,
+      minDate: new Date()
     });
 
     $('.datepicker_finish').datetimepicker({
       format: 'YYYY/MM/DD HH:mm',
       language: 'ja',
-      stepping: 5,
-      forceMinuteStep: true,
-      minDate: 0,
+      minDate: new Date()
+    });
+
+    $('form').on('submit', function () {
+      var date1 = $('.datepicker_starting').val();
+      var date2 = $('.datepicker_finish').val();
+      if(date1 >= date2){
+        alert('予約日時にエラーがあります。');
+        return false;
+      }else{
+        alert('予約されました。');
+      }
     });
   });
 </script>
 
-<div class="container">
-  <h1>予約の新規作成</h1>
+<h2>予約の新規作成</h2>
+<div class="col-7 p-2 border border-primary text-center">
   <%= form_with(model: @schedule, url: "/schedules/create/#{@room.id}", local: true) do |form| %>
-    <div class="input-group" data-target-input="nearest">
-      <%= form.label :starting_time, '開始時刻' %>
-      <%= form.text_field :starting_time, id: "starting_time", class: "form-control datepicker_starting", data: { target: '#starting_time'} %>
-      <div class="input-group-append" data-target="#starting_time" data-toggle="datetimepicker">
-          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    <div class="row">
+      <div class="col-6">
+        <%= form.label :starting_time, '開始時刻', {class: "text-left col-12"}%>
+        <div class="input-group" data-target-input="nearest">
+          <%= form.text_field :starting_time, id: "starting_time", class: "form-control datepicker_starting", data: { target: '#starting_time'} %>
+          <div class="input-group-append" data-target="#starting_time" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+      <%= form.label :finish_time, '終了時刻', {class: "text-left col-12"} %>
+        <div class="input-group" data-target-input="nearest">
+          <%= form.text_field :finish_time, id: "finish_time", class: "form-control datepicker_finish", data: { target: '#finish_time'} %>
+          <div class="input-group-append" data-target="#finish_time" data-toggle="datetimepicker">
+              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="input-group" data-target-input="nearest">
-      <%= form.label :finish_time, '終了時刻' %>
-      <%= form.text_field :finish_time, id: "finish_time", class: "form-control datepicker_finish", data: { target: '#finish_time'} %>
-      <div class="input-group-append" data-target="#finish_time" data-toggle="datetimepicker">
-          <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+    <div class="row">
+      <div class="col-12">
+        <%= form.label :title, 'タイトル',{class: "text-left col-12"}%>
+        <%= form.text_field :title, {class: "col-12"} %>
       </div>
     </div>
-    <%= form.label :title, 'タイトル' %>
-    <%= form.text_field :title %></br>
-    <%= form.label :detail, '内容' %>
-    <%= form.text_field :detail %></br>
-    <%= form.hidden_field :room_id, :value => @room.id %>
-    <%= form.hidden_field :user_id, :value => @user.id %>
-    <%= form.submit "新規作成"%>
-  <% end %>
+    <div class="row">
+      <div class="col-12 detail">
+        <%= form.label :detail, '内容',{class: "text-left col-12"} %>
+        <%= form.text_area :detail, {class: "col-12", rows: "5"} %>
+      </div>
+    </div>    
+        <%= form.hidden_field :room_id, :value => @room.id %>
+        <%= form.hidden_field :user_id, :value => @user.id %>
+    <div class="row">
+      <div class="text-right col-12 mt-2">
+        <%= form.submit "新規作成", {class: "p-2 text-white rounded bg-primary"} %>
+      </div>
+    </div>
+      <% end %>
 </div>
-

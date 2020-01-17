@@ -1,13 +1,35 @@
-<div class="container">
-  <%= link_to "新規作成", "/rooms/new" %></br>
+<div class="float-left">
+  <h2>会議室一覧</h2>
+</div>
+<div class="float-right">
+  <%= link_to "新規作成", "/rooms/new", {class: "p-2 text-white rounded bg-primary"} %>
+</div>
+<table class="table">
+  <thead class="thead-blue">
+    <tr class="border border-primary">
+      <th class="border-primary">会議室名</th>
+      <th class="border-primary">収容人数(名)</th>
+      <th class="border-primary">利用金額(円)</th>
+      <th class="border-primary">使用可能時間</th>
+      <th class="border-primary">備考</th>
+      <th class="border-primary">編集</th>
+      <th class="border-primary">カレンダー</th>
+    </tr>
+  </thead>
   <% if @rooms %>
     <% @rooms.each do |room| %>
-      <%= room.name %>
-      <%= room.seating_capacity %>
-      <%= room.usage_fee %>
-      <%= room.accountable_time %>
-      <%= link_to "編集", "/rooms/edit/#{room.id}" %>
-      <%= link_to "カレンダー", "/schedules/top/#{room.id}" %></br>
+        <tbody>
+          <tr class="border border-primary">
+            <td><%= room.name %></td>
+            <td><%= room.seating_capacity %>人</td>
+            <td><%= room.usage_fee %>円</td>
+            <td><%= room.accountable_time %></td>
+            <td><%= room.note %></td>
+            <td><%= link_to "編集", "/rooms/edit/#{room.id}", {class: "p-2 text-white rounded bg-primary"} %></td>
+            <td><%= link_to "カレンダー", "/schedules/top/#{room.id}", {class: "p-2 text-white rounded bg-primary"} %></td>
+          </tr>
+        </tbody>
     <% end %>
   <% end %>
-</div>
+<table>
+

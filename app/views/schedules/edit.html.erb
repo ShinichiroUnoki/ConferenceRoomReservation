@@ -1,0 +1,91 @@
+<script type="text/javascript">
+  $(function () {
+    $('.datepicker_starting').datetimepicker({
+      minDate: new Date(),
+      format: 'YYYY/MM/DD HH:mm',
+      language: 'ja',
+    });
+
+    $('.datepicker_finish').datetimepicker({
+      minDate: new Date(),
+      format: 'YYYY/MM/DD HH:mm',
+      language: 'ja',
+    });
+
+    $('form').on('submit', function () {
+      var date1 = $('.datepicker_starting').val();
+      var date2 = $('.datepicker_finish').val();
+      if(date1 >= date2){
+        alert('編集日時にエラーがあります。');
+        return false;
+      }else{
+        alert('予約が編集されました。');
+      }
+    });
+  });
+</script>
+
+<% if current_user.id == @schedule.user_id %>
+  <h2>予約の編集</h2>
+  <div class="col-7 p-2 border border-primary text-center">
+    <%= form_with(model: @schedule, url: "/schedules/update/#{@schedule.id}", local: true) do |form| %>
+      <div class="row">
+        <div class="col-6">
+          <%= form.label :starting_time, '開始時刻', {class: "text-left col-12"} %>
+          <div class="input-group" data-target-input="nearest">
+            <%= form.text_field :starting_time, id: "starting_time", class: "form-control datepicker_starting", data: { target: '#starting_time'} %>
+            <div class="input-group-append" data-target="#starting_time" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6">    
+          <%= form.label :finish_time, '終了時刻', {class: "text-left col-12"} %>
+          <div class="input-group" data-target-input="nearest">           
+            <%= form.text_field :finish_time, id: "finish_time", class: "form-control datepicker_finish", data: { target: '#finish_time'} %>
+            <div class="input-group-append" data-target="#finish_time" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <%= form.label :title, 'タイトル', {class: "text-left col-12"} %>
+          <%= form.text_field :title, {class: "col-12"} %>
+        </div>
+        <div class="col-12 detail">
+          <%= form.label :detail, '内容', {class: "text-left col-12"} %>
+          <%= form.text_area :detail, {class: "col-12", rows: "5"} %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="text-right col-12">
+          <%= link_to "削除", "/schedules/destroy/#{@schedule.id}", {method: :delete, class: "p-2 text-white rounded bg-danger"} %>
+          <%= form.submit "編集", {class: "p-2 text-white rounded bg-primary"} %>
+        </div>
+      </div>          
+    <% end %>
+  </div>
+<% else %>
+  <h2>予約の詳細</h2>
+    <table class="table">
+      <thead class="thead-blue">
+        <tr class="border border-primary">
+          <th class="border-primary">開始時刻</th>
+          <th class="border-primary">終了時刻</th>
+          <th class="border-primary">タイトル</th>
+          <th class="border-primary">内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border border-primary">
+          <td><%= @schedule.starting_time.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= @schedule.finish_time.strftime('%Y/%m/%d %H:%M') %></td>
+          <td><%= @schedule.title %></td>
+          <td><%= @schedule.detail %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+<% end %>

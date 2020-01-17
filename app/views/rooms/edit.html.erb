@@ -1,17 +1,37 @@
-<div class="container">
-  <h1><%= @room.name %>の新規登録</h1>
+<h2><%= @room.name %>の編集</h2>
+<div class="col-6 border border-primary text-center">
   <%= form_with(model: @room, url: "/rooms/update/#{@room.id}", local: true) do |form| %>
-    <%= form.label :name, '会議室名' %>
-    <%= form.text_field :name, value: @room.name %></br>
-    <%= form.label :seating_capacity, '収容人数' %>
-    <%= form.text_field :seating_capacity, value: @room.seating_capacity %></br>
-    <%= form.label :usage_fee, '利用金額' %>
-    <%= form.text_field :usage_fee, value: @room.usage_fee %></br>
-    <%= form.label :accountable_time, '使用可能時間' %>
-    <%= form.text_field :accountable_time, value: @room.accountable_time %></br>
-    <%= form.label :note, '備考' %>
-    <%= form.text_field :note, value: @room.note %></br>
-    <%= link_to "削除", "/rooms/destroy/#{@room.id}", method: :delete %>
-    <%= form.submit "登録"%>
+    <div class="row">
+      <div class="col-6">
+        <%= form.label :name, '会議室名', {class: "text-left col-10"} %>
+        <%= form.text_field :name, value: @room.name %>
+      </div>
+      <div class="col-6">
+        <%= form.label :seating_capacity, '収容人数(名)', {class: "text-left col-10"} %>
+        <%= form.text_field :seating_capacity, value: @room.seating_capacity %>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="col-6">
+        <%= form.label :usage_fee, '利用金額(円)', {class: "text-left col-10"} %>
+        <%= form.text_field :usage_fee, value: @room.usage_fee %>
+      </div>
+      <div class="col-6">
+        <%= form.label :accountable_time, '使用可能時間', {class: "text-left col-10"} %>
+        <%= form.text_field :accountable_time, value: @room.accountable_time %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 note">
+        <%= form.label :note, '備考', {class: "text-left col-11"} %>
+        <%= form.text_area :note, {value: @room.note, class: "col-11", rows: "5"} %></br>
+      </div>
+    </div>  
+    <div class="row">
+      <div class="text-right col-11 p-0">
+        <%= link_to "削除", "/rooms/destroy/#{@room.id}", {method: :delete, class: "my-2 p-2 text-white rounded bg-danger"} %>
+        <%= form.submit "登録", {class: "my-2 p-2 text-white rounded bg-primary"} %>
+      </div>
+    </div>    
   <% end %>
 </div>
