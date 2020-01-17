@@ -1,3 +1,16 @@
+<script type="text/javascript">
+window.onload = function() {
+  let path = location.pathname;
+  let pattern = /^.*\/new.*$/;
+
+  if(path.match(pattern)) return;
+
+  history.replaceState('', '', `/new`)
+}
+</script>
+<% if @room.errors.any? %>
+   <p>保存できませんでした。(※)に空白があります。</p>
+<% end %>
 <h2>会議室の新規登録</h2>
 <div class="col-6 border border-primary text-center">
   <%= form_with(model: @room, url: "/rooms/create", local: true) do |form| %>

@@ -1,4 +1,13 @@
 <script type="text/javascript">
+  window.onload = function() {
+    let path = location.pathname;
+    let pattern = /^.*\/new.*$/;
+
+    if(path.match(pattern)) return;
+
+    history.replaceState('', '', `/new/<%= @room.id %>`)
+  }
+
   $(function () {
     $('.datepicker_starting').datetimepicker({
       format: 'YYYY/MM/DD HH:mm',
@@ -34,6 +43,9 @@
 </script>
 
 <h2>予約の新規作成</h2>
+<% if @schedule.errors.any? %>
+  <p>保存できませんでした。(※)に空白があります。</p>
+<% end %>
 <div class="col-7 p-2 border border-primary text-center">
   <%= form_with(model: @schedule, url: "/schedules/create/#{@room.id}", local: true) do |form| %>
     <div class="row">

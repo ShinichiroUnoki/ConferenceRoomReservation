@@ -11,8 +11,12 @@ class RoomsController < ApplicationController
 
   def create
     @facility = Facility.find(1)
-    @room = @facility.rooms.create(room_params)
-    redirect_to("/")
+    @room = @facility.rooms.new(room_params)
+    if @room.save
+      redirect_to("/")
+    else
+      render action: :new
+    end
   end
 
   def edit
@@ -23,8 +27,11 @@ class RoomsController < ApplicationController
   def update
     @facility = Facility.find(1)
     @room = @facility.rooms.find(params[:id])
-    @room.update(room_params)
-    redirect_to("/")
+    if @room.update(room_params)
+      redirect_to("/")
+    else
+      render action: :edit
+    end
   end
 
   def destroy

@@ -17,8 +17,11 @@ class SchedulesController < ApplicationController
   def create
     @room = Room.find(params[:id])
     @schedule = Schedule.new(schedule_params)
-    @schedule.save!
-    redirect_to("/schedules/top/#{@room.id}")
+    if @schedule.save
+      redirect_to("/schedules/top/#{@room.id}")
+    else
+      render action: :new
+    end
   end
 
   def edit
@@ -27,8 +30,11 @@ class SchedulesController < ApplicationController
 
   def update
     @schedule= Schedule.find(params[:id])
-    @schedule.update(schedule_params)
-    redirect_to("/schedules/top/#{@schedule.room_id}")
+    if @schedule.update(schedule_params)
+      redirect_to("/schedules/top/#{@schedule.room_id}")
+    else
+      render action: :edit
+    end
   end
 
   def destroy

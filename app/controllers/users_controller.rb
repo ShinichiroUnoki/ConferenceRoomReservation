@@ -7,8 +7,11 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to("/users/show")
+    if @user.update(user_params)
+      redirect_to("/")
+    else
+      render "/users/edit"
+    end
   end
 
   def user_params

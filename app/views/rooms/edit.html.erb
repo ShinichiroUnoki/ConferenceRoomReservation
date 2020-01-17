@@ -1,3 +1,17 @@
+<script type="text/javascript">
+window.onload = function() {
+  let path = location.pathname;
+  let pattern = /^.*\/new.*$/;
+
+  if(path.match(pattern)) return;
+
+  history.replaceState('', '', `/edit/<%= @room.id %>`)
+}
+</script>
+
+<% if @room.errors.any? %>
+   <p>保存できませんでした。(※)に空白があります。</p>
+<% end %>
 <h2><%= @room.name %>の編集</h2>
 <div class="col-6 border border-primary text-center">
   <%= form_with(model: @room, url: "/rooms/update/#{@room.id}", local: true) do |form| %>
