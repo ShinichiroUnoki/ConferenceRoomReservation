@@ -1,29 +1,45 @@
-<h2 class="text-center">ユーザー登録</h2>
+<h2>ユーザー登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="text-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="field">
+          <%= f.label :email, "メールアドレス", {class: "mt-2 text-left col-12"} %>
+          <%= f.email_field :email, {autofocus: true, autocomplete: "email", class: "col-12"} %>
+        </div>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="field">
+          <%= f.label :password, "パスワード", {class: "mt-2 text-left col-12"} %>
+          <%= f.password_field :password, {autocomplete: "new-password", class: "col-12"} %>
+          <% if @minimum_password_length %>
+            <div class="text-left ml-3 mb-3">
+              (<%= @minimum_password_length %> 文字以上)
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>    
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="field">
+          <%= f.label :password_confirmation, "パスワード確認", {class: "mt-2 text-left col-12"} %><br />
+          <%= f.password_field :password_confirmation, {autocomplete: "new-password", class: "mb-3 col-12"} %>
+        </div>
+      </div>
+    </div>        
 
-  <div class="field">
-    <!-- 施設テーブルへ関連付けの為、追加 -->
-    <%= f.hidden_field :facility_id, :value => 1 %>
+    <div class="field">
+      <!-- 施設テーブルへ関連付けの為、追加 -->
+      <%= f.hidden_field :facility_id, :value => 1 %>
+    </div>
   </div>
 
   <div class="actions text-center">
@@ -31,6 +47,6 @@
   </div>
 <% end %>
 
-<div class="text-center">
+<div class="text-center my-3">
   <%= render "devise/shared/links" %>
 </div>

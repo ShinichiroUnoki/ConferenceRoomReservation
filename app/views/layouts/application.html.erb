@@ -1,6 +1,10 @@
 <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ConferenceRoomReservation</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,10 +13,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
+  <body class="mb-0 pb-0">
   <% if user_signed_in? %>
-      <div class="container-fluid overall">
+      <div class="container-fluid">
         <div class="row menu">
           <div class="col-2 bg-primary">
             <div class="row h-50 pl-5 pt-5 d-flex flex-column bd-highlight mb-3">
@@ -20,8 +23,8 @@
               <p><%= link_to "マイカレンダー", "/users/calendar", {class: "text-white p-2 bd-highlight"} %></p>
               <p><%= link_to "マイページ", "/users/edit", {class: "text-white p-2 bd-highlight"} %></p>
             </div>
-            <div class="row h-50 pl-5">
-              <div class="d-flex flex-column bd-highlight mb-3">
+            <div class="row pl-5">
+              <div class="d-flex flex-column bd-highlight">
               <p><%= link_to "ログアウト", destroy_user_session_path, {method: :delete, class: "text-white p-2 bd-highlight"} %></p>
               </div>
             </div>

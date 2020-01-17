@@ -6,4 +6,6 @@ class User < ApplicationRecord
   belongs_to :facility
   has_many :schedules, dependent: :destroy
   has_many :rooms, through: :schedules, dependent: :destroy
+  validates :last_name, :first_name, presence: true
+
 end

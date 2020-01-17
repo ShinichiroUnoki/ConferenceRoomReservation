@@ -3,21 +3,21 @@
   <%= form_with(model: @room, url: "/rooms/create", local: true) do |form| %>
     <div class="row">
       <div class="col-6">
-        <%= form.label :name, '会議室名', {class: "text-left col-10"}%>
+        <%= form.label :name, '会議室名(※)', {class: "text-left col-10"}%>
         <%= form.text_field :name %>
       </div>
       <div class="col-6">
-        <%= form.label :seating_capacity, '収容人数', {class: "text-left col-10"} %>
+        <%= form.label :seating_capacity, '収容人数(※)', {class: "text-left col-10"} %>
         <%= form.text_field :seating_capacity %>
       </div>
     </div>
     <div class="row">
       <div class="col-6">
-        <%= form.label :usage_fee, '利用金額', {class: "text-left col-10"} %>
+        <%= form.label :usage_fee, '利用金額(※)', {class: "text-left col-10"} %>
         <%= form.text_field :usage_fee %>
       </div>
       <div class="col-6">
-        <%= form.label :accountable_time, '使用可能時間', {class: "text-left col-10"} %>
+        <%= form.label :accountable_time, '使用可能時間(※)', {class: "text-left col-10"} %>
         <%= form.text_field :accountable_time %>
       </div>
     </div>

@@ -27,5 +27,8 @@ Rails.application.routes.draw do
   #登録情報
   get '/users/edit'
 
+  #devise
+  get '/users', to: redirect("/users/sign_up")
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

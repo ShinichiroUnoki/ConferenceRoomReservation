@@ -1,70 +1,70 @@
 <h2>マイページ</h2>
-<div class="col-7 p-2 border border-primary text-center">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
-    <div class="row">
-      <div class="col-6">
-        <div class="field">
-          <%= f.label :last_name, "姓", {class: "text-left col-12"} %><br />
-          <%= f.text_field :last_name, {autofocus: true, autocomplete: "last_name", class: "col-12"} %>
+    <div class="col-7 p-2 mb-3 border border-primary text-center">
+      <div class="row">
+        <div class="col-6">
+          <div class="field">
+            <%= f.label :last_name, "姓(※)", {class: "text-left col-12"} %><br />
+            <%= f.text_field :last_name, {autofocus: true, autocomplete: "last_name", class: "col-12"} %>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="field">
+            <%= f.label :first_name, "名(※)", {class: "text-left col-12"} %><br />
+            <%= f.text_field :first_name, {autofocus: true, autocomplete: "first_name", class: "col-12"}  %>
+          </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="field">
-          <%= f.label :first_name, "名", {class: "text-left col-12"} %><br />
-          <%= f.text_field :first_name, {autofocus: true, autocomplete: "first_name", class: "col-12"}  %>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="field">
-          <%= f.label :email, "メールアドレス", {class: "mt-2 text-left col-12"} %><br />
-          <%= f.email_field :email, {autofocus: true, autocomplete: "email", class: "col-12"} %>
-        </div>
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-        <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="field">
-          <%= f.label :password, "パスワード変更(変更しない場合は空白にしておいて下さい。)", {class: "mt-3 text-left col-12"} %>
-          <%= f.password_field :password, {autocomplete: "new-password", class: "col-12"} %>
-          <% if @minimum_password_length %>
-            <div class="text-left ml-3 mb-3">
-              (<%= @minimum_password_length %> 文字以上)
-            </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="field">
+            <%= f.label :email, "メールアドレス", {class: "mt-2 text-left col-12"} %>
+            <%= f.email_field :email, {autofocus: true, autocomplete: "email", class: "col-12"} %>
+          </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="field">
-          <%= f.label :password_confirmation, "パスワード確認", {class: " text-left col-12"} %><br />
-          <%= f.password_field :password_confirmation, {autocomplete: "new-password", class: "col-12"} %>
+      <div class="row">
+        <div class="col-12">
+          <div class="field">
+            <%= f.label :password, "パスワード変更(変更しない場合は空白にしておいて下さい。)", {class: "mt-3 text-left col-12"} %>
+            <%= f.password_field :password, {autocomplete: "new-password", class: "col-12"} %>
+            <% if @minimum_password_length %>
+              <div class="text-left ml-3 mb-3">
+                (<%= @minimum_password_length %> 文字以上)
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="field">
-          <%= f.label :current_password, "現在のパスワード(内容を更新するには現在のパスワードが必要です)", {class: "mt-2 text-left col-12"} %>
-          <%= f.password_field :current_password, {autocomplete: "current-password", class: "col-12"} %>
+      <div class="row">
+        <div class="col-12">
+          <div class="field">
+            <%= f.label :password_confirmation, "パスワード確認", {class: " text-left col-12"} %><br />
+            <%= f.password_field :password_confirmation, {autocomplete: "new-password", class: "col-12"} %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="text-right col-12">
-        <div class="actions">
-          <%= f.submit "更新", {class: "text-white rounded bg-primary"} %>
+      <div class="row">
+        <div class="col-12">
+          <div class="field">
+            <%= f.label :current_password, "現在のパスワード(内容を更新するには現在のパスワードが必要です)", {class: "mt-2 text-left col-12"} %>
+            <%= f.password_field :current_password, {autocomplete: "current-password", class: "col-12"} %>
+          </div>
         </div>
       </div>
-    </div>
+      <div class="row">
+        <div class="text-center col-12 my-3">
+          <div class="actions">
+            <%= f.submit "更新", {class: "text-white rounded bg-primary"} %>
+          </div>
+        </div>
+      </div>
   <% end %>
 
-  <h4>アカウントを削除する</h4>
-  <%= button_to "アカウント削除", registration_path(resource_name), {data: { confirm: "本当によろしいでしょうか?" }, method: :delete, class: "text-white rounded bg-danger"} %></p>
-</div>
+      <p class="mb-0">アカウントを削除する</p>
+      <%= button_to "アカウント削除", registration_path(resource_name), {data: { confirm: "本当によろしいでしょうか?" }, method: :delete, class: "text-white rounded bg-danger"} %></p>
+    </div>
