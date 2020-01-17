@@ -3,21 +3,21 @@
   <%= form_with(model: @room, url: "/rooms/update/#{@room.id}", local: true) do |form| %>
     <div class="row">
       <div class="col-6">
-        <%= form.label :name, '会議室名', {class: "text-left col-10"} %>
+        <%= form.label :name, '会議室名(※)', {class: "text-left col-10"} %>
         <%= form.text_field :name, value: @room.name %>
       </div>
       <div class="col-6">
-        <%= form.label :seating_capacity, '収容人数(名)', {class: "text-left col-10"} %>
+        <%= form.label :seating_capacity, '収容人数(名)(※)', {class: "text-left col-10"} %>
         <%= form.text_field :seating_capacity, value: @room.seating_capacity %>
       </div>
     </div>  
     <div class="row">
       <div class="col-6">
-        <%= form.label :usage_fee, '利用金額(円)', {class: "text-left col-10"} %>
+        <%= form.label :usage_fee, '利用金額(円)(※)', {class: "text-left col-10"} %>
         <%= form.text_field :usage_fee, value: @room.usage_fee %>
       </div>
       <div class="col-6">
-        <%= form.label :accountable_time, '使用可能時間', {class: "text-left col-10"} %>
+        <%= form.label :accountable_time, '使用可能時間(※)', {class: "text-left col-10"} %>
         <%= form.text_field :accountable_time, value: @room.accountable_time %>
       </div>
     </div>

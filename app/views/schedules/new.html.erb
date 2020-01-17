@@ -11,12 +11,20 @@
       language: 'ja',
       minDate: new Date()
     });
-
+    
     $('form').on('submit', function () {
       var date1 = $('.datepicker_starting').val();
       var date2 = $('.datepicker_finish').val();
+      if (date1 == ''){
+        alert('開始時刻が空白です。');
+        return false;
+      }
+      if(date2 == ''){
+        alert('終了時刻が空白です。');
+        return false;
+      }
       if(date1 >= date2){
-        alert('予約日時にエラーがあります。');
+        alert('終了時刻が開始時刻よりも前に設定されています。');
         return false;
       }else{
         alert('予約されました。');
