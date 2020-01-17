@@ -72,6 +72,10 @@ gem 'momentjs-rails'
 #devise(ログイン機能追加)
 gem 'devise'
 
+#devise(日本語化)
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 #bootstrap4
 gem 'bootstrap', '~> 4.3.1'
 
