@@ -7,7 +7,7 @@ ruby '2.5.7'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 # Use postgresql as the database for Active Record(herokuデプロイ用)
 group :production do
-  gem 'pg'
+  gem 'pg', '>= 0.18', '< 2.0'
 end
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
