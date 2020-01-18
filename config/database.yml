@@ -17,5 +17,7 @@ test:
 production:
   <<: *default
   adapter: postgresql
+  database: db/production.pg
   encoding: unicode
   pool: 5
+  
