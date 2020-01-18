@@ -13,9 +13,3 @@ development:
 test:
   <<: *default
   database: myapp_test
-
-production:
-  <<: *default
-  adapter: postgresql
-  database: db/production.pg
-  
