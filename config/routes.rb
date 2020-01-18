@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   #会議室一覧
-  root 'rooms#index'
+  root to:'rooms#index'
   #会議室の新規登録
   get 'rooms/new', to: 'rooms#new'
   post 'rooms/create', to: 'rooms#create'

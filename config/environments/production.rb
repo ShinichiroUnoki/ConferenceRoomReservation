@@ -91,4 +91,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  #herokuデプロイ時devise対策
+  config.action_mailer.default_url_options = { :host => 'crr2020.herokuapp.com' }
 end
